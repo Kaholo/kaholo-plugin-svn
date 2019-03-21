@@ -12,7 +12,7 @@ function checkOut(action, settings) {
         let url = action.params.remote_SVN_repo;
         let wc = action.params.local_wc;
         let options = _options(action, settings)
-        svn.commands.co(url, wc, login, function (err, res) {
+        svn.commands.co(url, wc, options, function (err, res) {
             if (err)
                 return reject(err);
 
@@ -34,8 +34,40 @@ function getRevision(action, settings) {
     })
 }
 
+function getTasks(action, settings) {
+    return new Promise((resolve, reject) => {
+        let options = {
+            username: action.params.USER || settings.USER,
+            password: action.params.PASSWORD || settings.PASSWORD,
+            revision: action.params.REVISION,
+            verbose: true
+        };
+        let cmdOut = "";
+        let target = action.params.TARGET;
+
+        if (action.params.PATTERN.startsWith('/') && action.params.PATTERN.endsWith('/'))
+            action.params.PATTERN = action.params.PATTERN.slice(1,-1);
+
+        let pattern = new RegExp(action.params.PATTERN);
+        svn.commands.log(target, options, function (err, res) {
+            if (err)
+                return reject(err)
+            if (!Array.isArray(res.logentry))
+                res.logentry = [res.logentry];
+
+            res.logentry.forEach(results => {
+                let taskNumber = results.msg.match(pattern);
+                cmdOut += (taskNumber.length ? taskNumber[0] : '') + "\n"
+            })
+            resolve(cmdOut)
+        })
+    })
+}
+
+
 
 module.exports = {
     checkOut: checkOut,
-    getRevision: getRevision
+    getRevision: getRevision,
+    getTasks: getTasks
 };

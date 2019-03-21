@@ -64,6 +64,36 @@
           "type": "string"
         }
       ]
+    },
+    {
+      "name": "getTasks",
+      "viewName": "SVN get tasks # from commits",
+      "params": [
+        {"name": "USER",
+          "viewName": "User",
+          "type": "string"
+        },
+        {
+          "name": "PASSWORD",
+          "viewName": "Password",
+          "type": "vault"
+        },
+        {
+          "name": "TARGET",
+          "viewName": "SVN URL/path to WC",
+          "type": "string"
+        },
+        {
+          "name": "REVISION",
+          "viewName": "Revision or revision range (1:10)",
+          "type": "string"
+        },
+        {
+          "name": "PATTERN",
+          "viewName": "Regexp for search",
+          "type": "string"
+        }
+      ]
     }
     ]
   }
