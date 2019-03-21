@@ -44,6 +44,26 @@
           "type": "vault"
         }
       ]
+    },
+    {
+      "name": "getRevision",
+      "viewName": "SVN get revision",
+      "params": [
+        {"name": "USER",
+          "viewName": "User",
+          "type": "string"
+        },
+        {
+          "name": "PASSWORD",
+          "viewName": "Password",
+          "type": "vault"
+        },
+        {
+          "name": "TARGET",
+          "viewName": "SVN URL/path to WC",
+          "type": "string"
+        }
+      ]
     }
     ]
   }
