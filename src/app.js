@@ -43,6 +43,8 @@ function getTasks(action, settings) {
             verbose: true
         };
         let cmdOut = "";
+        let output = "";
+        let tasksArray = [];
         let target = action.params.TARGET;
 
         if (action.params.PATTERN.startsWith('/') && action.params.PATTERN.endsWith('/'))
@@ -57,9 +59,16 @@ function getTasks(action, settings) {
 
             res.logentry.forEach(results => {
                 let taskNumber = results.msg.match(pattern);
-                cmdOut += (taskNumber.length ? taskNumber[0] : '') + "\n"
+                if (taskNumber != undefined) {
+                    cmdOut = (taskNumber.length ? taskNumber[0] : '')
+                    tasksArray.push(cmdOut)
+                }
             })
-            resolve(cmdOut)
+            removeDups = new Set(tasksArray)
+            removeDups.forEach(out => {
+                output += out + "\n";
+            })
+            resolve(output)
         })
     })
 }
