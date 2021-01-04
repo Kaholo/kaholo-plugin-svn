@@ -1,0 +1,99 @@
+{
+  "name": "SVN",
+  "type": "executer",
+  "execProgram": "node",
+  "main": "app.js",
+  "imgUrl": "logo.png",
+  "version": "0.0.1",
+  "description": "Run SVN checkout.",
+  "settings":[
+    {
+      "name":"USER",
+      "viewName":"User",
+      "type":"string"
+    },
+    {
+      "name":"PASSWORD",
+      "viewName":"Password",
+      "type":"vault"
+    }
+  ],
+  "methods": [
+    {
+      "name": "checkOut",
+      "viewName": "SVN Checkout",
+      "params": [
+        {
+          "name": "remote_SVN_repo",
+          "viewName": "SVN URL",
+          "type": "string"
+        },
+        {
+          "name": "local_wc",
+          "viewName": "Working copy",
+          "type": "string"
+        },
+        {
+          "name": "USER",
+          "viewName": "User",
+          "type": "string"
+        },
+        {
+          "name": "PASSWORD",
+          "viewName": "Password",
+          "type": "vault"
+        }
+      ]
+    },
+    {
+      "name": "getRevision",
+      "viewName": "SVN get revision",
+      "params": [
+        {"name": "USER",
+          "viewName": "User",
+          "type": "string"
+        },
+        {
+          "name": "PASSWORD",
+          "viewName": "Password",
+          "type": "vault"
+        },
+        {
+          "name": "TARGET",
+          "viewName": "SVN URL/path to WC",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "getTasks",
+      "viewName": "SVN get tasks # from commits",
+      "params": [
+        {"name": "USER",
+          "viewName": "User",
+          "type": "string"
+        },
+        {
+          "name": "PASSWORD",
+          "viewName": "Password",
+          "type": "vault"
+        },
+        {
+          "name": "TARGET",
+          "viewName": "SVN URL/path to WC",
+          "type": "string"
+        },
+        {
+          "name": "REVISION",
+          "viewName": "Revision or revision range (1:10)",
+          "type": "string"
+        },
+        {
+          "name": "PATTERN",
+          "viewName": "Regexp for search",
+          "type": "string"
+        }
+      ]
+    }
+    ]
+  }
