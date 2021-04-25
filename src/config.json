@@ -4,8 +4,8 @@
   "execProgram": "node",
   "main": "app.js",
   "imgUrl": "logo.png",
-  "version": "0.0.1",
-  "description": "Run SVN checkout.",
+  "version": "0.0.2",
+  "description": "Run SVN checkout",
   "settings":[
     {
       "name":"USER",
@@ -21,16 +21,16 @@
   "methods": [
     {
       "name": "checkOut",
-      "viewName": "SVN Checkout",
+      "viewName": "Checkout",
       "params": [
         {
           "name": "remote_SVN_repo",
-          "viewName": "SVN URL",
+          "viewName": "Repository URL",
           "type": "string"
         },
         {
           "name": "local_wc",
-          "viewName": "Working copy",
+          "viewName": "Working Copy",
           "type": "string"
         },
         {
@@ -47,7 +47,7 @@
     },
     {
       "name": "getRevision",
-      "viewName": "SVN get revision",
+      "viewName": "Get Revision",
       "params": [
         {"name": "USER",
           "viewName": "User",
@@ -67,7 +67,7 @@
     },
     {
       "name": "getTasks",
-      "viewName": "SVN get tasks # from commits",
+      "viewName": "Get Task Numbers",
       "params": [
         {"name": "USER",
           "viewName": "User",
@@ -85,12 +85,12 @@
         },
         {
           "name": "REVISION",
-          "viewName": "Revision or revision range (1:10)",
+          "viewName": "Revision Range",
           "type": "string"
         },
         {
           "name": "PATTERN",
-          "viewName": "Regexp for search",
+          "viewName": "Search Regexp",
           "type": "string"
         }
       ]
